@@ -19,7 +19,7 @@ class DictionaryProvider {
   initialize(asyncReturn) {
     var sqlite = new SqliteProvider();
     this.state.db = sqlite;
-    sqlite.loadFile('/dist/etc/data/maori_dictionary_0.2.sqlite', () => {
+    sqlite.loadFile('../dist/etc/data/maori_dictionary_0.2.sqlite', () => {
       this.state.loaded = true;
       asyncReturn();
     });
