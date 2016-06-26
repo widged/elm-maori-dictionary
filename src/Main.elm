@@ -106,7 +106,7 @@ view store =
       ]
   in
     div []
-      [ link "/dist/style.css"
+      [ link "../dist/style.css"
       -- , text ("Store: " ++ toString store)
       , div [] [ App.map (LetterPickerMsg "uid") (LetterPicker.render store.eLetterPicker) ]
       , div [] [ App.map (SearchBoxMsg "uid") (SearchBox.render store.eSearchBox) ]
