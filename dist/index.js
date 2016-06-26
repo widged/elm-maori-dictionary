@@ -27,7 +27,6 @@ class DictionaryProvider {
 
   listItemsForLetter(letter, asyncReturn) {
     const {db} = this.state;
-    letter = letter.toUpperCase();
     db.runCommand(`SELECT word, definition FROM dictionary WHERE letter="${letter}"`, (rows) => {
       asyncReturn(rows)
     });
