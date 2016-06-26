@@ -1,5 +1,8 @@
 This is a port to elm of a Maori dictionary project.
 
+
+![preview](https://raw.githubusercontent.com/widged/elm-maori-dictionary/gh-pages/preview.png "Preview")
+
 It is designed to work for elm version **0.17.x**.
 
 You will need at least node.js version **4**.
