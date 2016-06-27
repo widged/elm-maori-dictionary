@@ -1,11 +1,13 @@
-This is a port to elm of a Maori dictionary project.
+# Description
 
+Interactive interface for the Herbert Willliams' "Dictionary of the Maori Language", published by NZETC under a Creative Commons Attribution-Share Alike 3.0 New Zealand License. Ported from a Flex version, written for Android. See original project for information about the process followed to parse Willliams' dictionary - [https://github.com/widged/MaoriDictionary](github.com/widged/MaoriDictionary)
 
 ![preview](https://raw.githubusercontent.com/widged/elm-maori-dictionary/gh-pages/preview.png "Preview")
 
 It is designed to work for elm version **0.17.x**.
 
 You will need at least node.js version **4**.
+
 
 ## Getting Started
 
