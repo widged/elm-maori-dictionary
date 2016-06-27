@@ -1,7 +1,7 @@
 module SearchBox exposing (Model, initialModel, Msg (SearchWord), render, update)
 
 import Html exposing (Html, node, div, ul, text, button, input)
-import Html.Attributes exposing (..)
+import Html.Attributes as Attr
 import Html.Events exposing (onClick, onInput)
 import Array exposing (Array)
 import Task exposing (Task)
@@ -36,7 +36,7 @@ render model =
   let
     z = 1
   in
-    node "letter-picker" []
-      [ input [ type' "search", name "search", placeholder "Search for a word", onInput (\x -> InternalMsg (WordChange x))] []
-      , button [ onClick (SearchWord model.word) ] [ text "search" ]
+    node "search-box" []
+      [ input [ Attr.class "form-input", Attr.type' "search", Attr.name "search", Attr.placeholder "Search for a word", onInput (\x -> InternalMsg (WordChange x))] []
+      , button [ Attr.class "btn", onClick (SearchWord model.word) ] [ text "search" ]
       ]

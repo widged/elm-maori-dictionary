@@ -1,0 +1,59 @@
+.words h1 {
+	color: #222;
+	letter-spacing: -1px;
+}
+
+.words definition {
+	color: #333;
+	background: #000;
+	-webkit-font-smoothing: antialiased;
+}
+
+
+item-list > item {
+  margin: 0 9px;
+}
+
+.form-input,
+.btn {
+  -webkit-appearance: none;
+  font-size: 1.2rem;
+  height: 2.2rem;
+  line-height: 1.4rem;
+  outline: 0;
+  border-radius: .3rem;
+}
+
+
+.form-input {
+    padding: .7rem .8rem;
+    width: 200px;
+}
+
+.btn {
+  cursor: pointer;
+  padding: .3rem .8rem;
+  text-align: center;
+  text-decoration: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.controls {
+  position: relative;
+}
+.controls > div {
+  display: inline-block;
+  margin-right: 60px;
+}
+
+.controls .middle {
+  position: absolute;
+  vertical-algin: top;
+  padding-top: 1.2rem;
+  width: 400px;
+}

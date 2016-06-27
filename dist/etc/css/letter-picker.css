@@ -1,0 +1,14 @@
+letter-picker {
+
+}
+
+letter-picker ul {
+  display: inline;
+  margin: 0; padding: 0;
+}
+
+letter-picker li {
+  display: inline;
+  list-style-type: none;
+  padding-right: 20px;
+}

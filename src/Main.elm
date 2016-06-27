@@ -6,10 +6,10 @@ import Html.Attributes as Attr
 import Array exposing (Array)
 import Ports exposing (..)
 import VirtualDom exposing (property, Property)
-import Json.Encode as Json
 
 import LetterPicker
 import SearchBox
+import ItemList
 
 
 main : Program Never
@@ -23,7 +23,10 @@ main =
 
 -- INTERACTIVITY
 
-type Msg = LetterPickerMsg String LetterPicker.Msg | SearchBoxMsg String SearchBox.Msg | SetRows (Ports.Rows)
+type Msg = LetterPickerMsg String LetterPicker.Msg
+        | SearchBoxMsg String SearchBox.Msg
+        | WordListMsg String ItemList.Msg
+        | SetRows (Ports.Rows)
 
 subscriptions : Store -> Sub Msg
 subscriptions store =
@@ -32,11 +35,11 @@ subscriptions store =
 update : Msg -> Store -> ( Store, Cmd Msg )
 update msg store =
     let
-      log = Debug.log "msg" msg
+      log = Debug.log "msg" "nothing"
     in
     case msg of
         SetRows rows ->
-          { store | rows = rows } ! []
+            { store | rows = rows, eWordList = {items = rows} } ! []
         SearchBoxMsg uid wgMsg ->
           case wgMsg of
             SearchBox.SearchWord word  ->
@@ -68,13 +71,15 @@ update msg store =
               in
                 { store | eLetterPicker = newModel } ! [ Cmd.map (LetterPickerMsg "uid") cmd ]
 
-
+        WordListMsg uid wgMsg ->
+            store ! []
 
 -- DATA
 
 type alias Store =
     { eLetterPicker: LetterPicker.Model
     , eSearchBox: SearchBox.Model
+    , eWordList: ItemList.Model
     , letter: String
     , rows: Ports.Rows
     }
@@ -83,6 +88,7 @@ initStore : Store
 initStore =
   { eLetterPicker = LetterPicker.initialModel
   , eSearchBox = SearchBox.initialModel
+  , eWordList = ItemList.initialModel
   , letter = "a"
   , rows = []
   }
@@ -99,16 +105,59 @@ link href =
 
 view : Store -> Html Msg
 view store =
-  let
-    renderItem row = node "li" []
-      [ node "word" [] [text row.word]
-      , node "def" [property "innerHTML" (Json.string row.definition)] []
-      ]
-  in
-    div []
-      [ link "../dist/style.css"
+    div [ Attr.class "mdl-layout mdl-js-layout mdl-layout--fixed-header"]
       -- , text ("Store: " ++ toString store)
-      , div [] [ App.map (LetterPickerMsg "uid") (LetterPicker.render store.eLetterPicker) ]
-      , div [] [ App.map (SearchBoxMsg "uid") (SearchBox.render store.eSearchBox) ]
-      , div [ Attr.class "items" ] [node "ul" [] (List.map renderItem store.rows)]
+      [ node "header" [ Attr.class "mdl-layout__header mdl-layout__header--scroll mdl-color--primary" ]
+        [ div [ Attr.class "mdl-layout--large-screen-only mdl-layout__header-row" ] []
+        , div [ Attr.class "mdl-layout--large-screen-only mdl-layout__header-row" ]
+          [ Html.h3 [] [(text "Maori Dictionary")]
+          ]
+        , div [ Attr.class "mdl-layout--large-screen-only mdl-layout__header-row" ] []
+        , div [ Attr.class "mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark" ]
+          [ div [ Attr.class "controls" ]
+            [ div [ Attr.class "picker" ] [ App.map (LetterPickerMsg "uid") (LetterPicker.render store.eLetterPicker) ]
+            , div [ Attr.class "middle" ] [ text "hello" ]
+            , div [ Attr.class "middle" ] [ App.map (SearchBoxMsg "uid") (SearchBox.render store.eSearchBox) ]
+            ]
+          ]
+        ]
+      , node "main" [ Attr.class "words mdl-layout__content" ]
+        [ div [ Attr.class "mdl-layout__tab-panel is-active" ]
+          [ div [] [ App.map (WordListMsg "uid") (ItemList.render store.eWordList) ]
+          ]
+        ]
       ]
+{-
+    <main class="mdl-layout__content">
+      <div class="mdl-layout__tab-panel is-active" id="overview">
+        <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+          <div class="mdl-card mdl-cell mdl-cell--12-col">
+            <div class="mdl-card__supporting-text">
+              <h4>Technology</h4>
+              Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Nostrud in laboris labore nisi amet do dolor eu fugiat consectetur elit cillum esse. Pariatur occaecat nisi laboris tempor laboris eiusmod qui id Lorem esse commodo in. Exercitation aute dolore deserunt culpa consequat elit labore incididunt elit anim.
+            </div>
+          </div>
+          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="btn3">
+            <i class="material-icons">more_vert</i>
+          </button>
+          <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="btn3">
+            <li class="mdl-menu__item">Lorem</li>
+          </ul>
+        </section>
+        <section></section>
+      </div>
+      <footer class="mdl-mega-footer">
+        <div class="mdl-mega-footer--bottom-section">
+          <div class="mdl-logo">
+            More Information
+          </div>
+          <ul class="mdl-mega-footer--link-list">
+            <li><a href="https://developers.google.com/web/starter-kit/">Web Starter Kit</a></li>
+            <li><a href="#">Help</a></li>
+            <li><a href="#">Privacy and Terms</a></li>
+          </ul>
+        </div>
+      </footer>
+    </main>
+  </div>
+-}

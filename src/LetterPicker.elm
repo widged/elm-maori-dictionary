@@ -2,6 +2,7 @@ module LetterPicker exposing (Model, initialModel, Msg (SelectionChange), render
 
 import Html exposing (Html, node, div, ul, text, button)
 import Html.Events exposing (onClick)
+import Html.Attributes as Attr
 import Array exposing (Array)
 import Task exposing (Task)
 
@@ -51,10 +52,9 @@ update msg model =
 render : Model -> Html Msg
 render model =
   let
-    renderLetter (idx, letter) = node "li" [onClick (InternalMsg (Selection idx))] [text letter]
+    renderLetter (idx, letter) = node "li" [Attr.class "mdl-layout__tab" , onClick (InternalMsg (Selection idx))] [text letter]
     letters = List.map renderLetter (Array.toIndexedList model.letters)
   in
     node "letter-picker" []
       [ ul [] letters
-      -- , button [ onClick (InternalMsg Next) ] [ text "next" ]
       ]
