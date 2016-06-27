@@ -171,12 +171,14 @@
 
 	  listAllItemsInTable(table, asyncReturn) {
 	    let {db} = this.state;
+	    if(!db || typeof db.exec !== "function") { return; }
 	    var rows = db.exec(`SELECT * FROM ${table}`);
 	    asyncReturn(rowsAsObjects(rows[0]));
 	  }
 
 	  runCommand(cmd, asyncReturn) {
 	    let {db} = this.state;
+	    if(!db || typeof db.exec !== "function") { return; }
 	    var rows = db.exec(cmd);
 	    asyncReturn(rowsAsObjects(rows[0]));
 	  }
