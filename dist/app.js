@@ -8141,16 +8141,6 @@
 												]),
 											_elm_lang$core$Native_List.fromArray(
 												[
-													_elm_lang$html$Html$text('hello')
-												])),
-											A2(
-											_elm_lang$html$Html$div,
-											_elm_lang$core$Native_List.fromArray(
-												[
-													_elm_lang$html$Html_Attributes$class('middle')
-												]),
-											_elm_lang$core$Native_List.fromArray(
-												[
 													A2(
 													_elm_lang$html$Html_App$map,
 													_user$project$Main$SearchBoxMsg('uid'),

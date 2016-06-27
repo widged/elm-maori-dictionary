@@ -116,7 +116,6 @@ view store =
         , div [ Attr.class "mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark" ]
           [ div [ Attr.class "controls" ]
             [ div [ Attr.class "picker" ] [ App.map (LetterPickerMsg "uid") (LetterPicker.render store.eLetterPicker) ]
-            , div [ Attr.class "middle" ] [ text "hello" ]
             , div [ Attr.class "middle" ] [ App.map (SearchBoxMsg "uid") (SearchBox.render store.eSearchBox) ]
             ]
           ]
