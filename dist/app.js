@@ -8180,6 +8180,50 @@
 											_user$project$ItemList$render(store.eWordList))
 										]))
 								]))
+						])),
+					A3(
+					_elm_lang$html$Html$node,
+					'footer',
+					_elm_lang$core$Native_List.fromArray(
+						[
+							_elm_lang$html$Html_Attributes$class('mdl-mega-footer')
+						]),
+					_elm_lang$core$Native_List.fromArray(
+						[
+							A2(
+							_elm_lang$html$Html$div,
+							_elm_lang$core$Native_List.fromArray(
+								[]),
+							_elm_lang$core$Native_List.fromArray(
+								[
+									_elm_lang$html$Html$text('Click on any letter to start. '),
+									_elm_lang$html$Html$text('Made with '),
+									A3(
+									_elm_lang$html$Html$node,
+									'a',
+									_elm_lang$core$Native_List.fromArray(
+										[
+											_elm_lang$html$Html_Attributes$href('http://elm-lang.org/'),
+											_elm_lang$html$Html_Attributes$target('new')
+										]),
+									_elm_lang$core$Native_List.fromArray(
+										[
+											_elm_lang$html$Html$text('elm')
+										])),
+									_elm_lang$html$Html$text('. Fork on github '),
+									A3(
+									_elm_lang$html$Html$node,
+									'a',
+									_elm_lang$core$Native_List.fromArray(
+										[
+											_elm_lang$html$Html_Attributes$href('https://github.com/widged/elm-maori-dictionary'),
+											_elm_lang$html$Html_Attributes$target('new')
+										]),
+									_elm_lang$core$Native_List.fromArray(
+										[
+											_elm_lang$html$Html$text('elm-maori-dictionary')
+										]))
+								]))
 						]))
 				]));
 	};

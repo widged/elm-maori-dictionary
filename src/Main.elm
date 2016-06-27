@@ -125,38 +125,13 @@ view store =
           [ div [] [ App.map (WordListMsg "uid") (ItemList.render store.eWordList) ]
           ]
         ]
+      , node "footer" [ Attr.class "mdl-mega-footer" ]
+        [ div [ ]
+          [ text "Click on any letter to start. "
+          , text "Made with "
+          , node "a" [ Attr.href "http://elm-lang.org/", Attr.target "new" ] [ text "elm" ]
+          , text ". Fork on github "
+          , node "a" [ Attr.href "https://github.com/widged/elm-maori-dictionary", Attr.target "new" ] [ text "elm-maori-dictionary" ]
+          ]
+        ]
       ]
-{-
-    <main class="mdl-layout__content">
-      <div class="mdl-layout__tab-panel is-active" id="overview">
-        <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-          <div class="mdl-card mdl-cell mdl-cell--12-col">
-            <div class="mdl-card__supporting-text">
-              <h4>Technology</h4>
-              Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Nostrud in laboris labore nisi amet do dolor eu fugiat consectetur elit cillum esse. Pariatur occaecat nisi laboris tempor laboris eiusmod qui id Lorem esse commodo in. Exercitation aute dolore deserunt culpa consequat elit labore incididunt elit anim.
-            </div>
-          </div>
-          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="btn3">
-            <i class="material-icons">more_vert</i>
-          </button>
-          <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="btn3">
-            <li class="mdl-menu__item">Lorem</li>
-          </ul>
-        </section>
-        <section></section>
-      </div>
-      <footer class="mdl-mega-footer">
-        <div class="mdl-mega-footer--bottom-section">
-          <div class="mdl-logo">
-            More Information
-          </div>
-          <ul class="mdl-mega-footer--link-list">
-            <li><a href="https://developers.google.com/web/starter-kit/">Web Starter Kit</a></li>
-            <li><a href="#">Help</a></li>
-            <li><a href="#">Privacy and Terms</a></li>
-          </ul>
-        </div>
-      </footer>
-    </main>
-  </div>
--}
